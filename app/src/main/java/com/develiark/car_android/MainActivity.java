@@ -59,7 +59,12 @@ public class MainActivity extends AppCompatActivity {
         btnLeft.setOnTouchListener(otlBtnOk);
     }
 
-    void sendMessage(int id, String action) {
+    public static String performJSONAuth(String id, String action) {
+        return "{\"id\":\"" + id + "\",\"action\":\"" + action + "\"}";
+    }
 
+    void sendMessage(int id, String action) {
+        MainSocket mainSocket = new MainSocket();
+        mainSocket.sendMessage(performJSONAuth(Integer.toString(id), action));
     }
 }
