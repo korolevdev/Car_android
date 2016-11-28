@@ -12,40 +12,43 @@
 
     <Button
         android:text="→"
+        android:hint="2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button3"
-        android:textSize="25dp"
-        android:layout_above="@+id/button4"
-        android:layout_toRightOf="@+id/button4"
-        android:layout_toEndOf="@+id/button4" />
-
-    <Button
-        android:text="←"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        android:textSize="25dp"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/button"
-        android:layout_toStartOf="@+id/button" />
+        android:id="@+id/btnRight"
+        android:textSize="25dp" />
 
     <Button
         android:text="↓"
+        android:hint="3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button4"
+        android:id="@+id/btnDown"
         android:textSize="25dp"
-        android:layout_below="@+id/button2"
-        android:layout_toRightOf="@+id/button2"
-        android:layout_toEndOf="@+id/button2" />
+        android:layout_below="@+id/btnRight"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="←"
+        android:hint="4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLeft"
+        android:textSize="25dp"
+        android:layout_below="@+id/btnUp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button"
+        android:id="@+id/btnUp"
         android:textSize="25dp"
         android:text="↑"
-        android:layout_above="@+id/button3"
-        android:layout_centerHorizontal="true" />
+        android:hint="1"
+        android:layout_below="@+id/btnDown"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
