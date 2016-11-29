@@ -7,8 +7,8 @@ import java.nio.charset.Charset;
 public class ServerSender implements Runnable {
     private OutputStream mStream;
     public String message = "";
-    public static final String HOST = "172.25.67.123";
-    public static final int PORT = 7788;
+    public static final String HOST = MainActivity.ip;
+    public static final int PORT = Integer.valueOf(MainActivity.port);
 
     public ServerSender(Socket communicationSocket) throws IOException {
         if (communicationSocket.isClosed()) {

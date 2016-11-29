@@ -6,10 +6,14 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnUp;
+    public static String ip = "127.0.0.1";
+    public static String port = "9090";
+    EditText edtIp;
+    EditText edtPort;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +24,14 @@ public class MainActivity extends AppCompatActivity {
         Button btnDown = (Button) findViewById(R.id.btnDown);
         Button btnRight = (Button) findViewById(R.id.btnRight);
         Button btnLeft = (Button) findViewById(R.id.btnLeft);
+        edtIp = (EditText) findViewById(R.id.editIp);
+        edtPort = (EditText) findViewById(R.id.editPort);
 
         View.OnTouchListener otlBtnOk = new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                ip = edtIp.getText().toString();
+                port = edtPort.getText().toString();
                 int eventaction = event.getAction();
                 int id = 1;
                 switch (v.getId()) {

@@ -51,4 +51,29 @@
         android:layout_below="@+id/btnDown"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="IP"
+        android:ems="10"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="45dp"
+        android:id="@+id/editIp"
+        android:layout_below="@+id/btnLeft"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Port"
+        android:ems="10"
+        android:id="@+id/editPort"
+        android:layout_below="@+id/editIp"
+        android:layout_alignLeft="@+id/editIp"
+        android:layout_alignStart="@+id/editIp" />
 </RelativeLayout>
