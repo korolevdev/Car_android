@@ -11,24 +11,20 @@ public class ServerSender implements Runnable {
     public static final int PORT = Integer.valueOf(MainActivity.port);
 
     public ServerSender(Socket communicationSocket) throws IOException {
-        if (communicationSocket.isClosed()) {
-            communicationSocket = new Socket(HOST, PORT);
-        }
+        communicationSocket = new Socket(HOST, PORT);
         mStream = new BufferedOutputStream(communicationSocket.getOutputStream());
     }
 
     @Override
     public void run() {
-        if (message.endsWith("}")) {
-            byte[] data = message.getBytes(Charset.forName("UTF-8"));
+        byte[] data = message.getBytes(Charset.forName("UTF-8"));
 
-            try {
-                mStream.write(data);
-                mStream.flush();
-            } catch (IOException e) {
-               //MainActivity.handler.sendEmptyMessage(SERVER_ERROR);
-                e.printStackTrace();
-            }
+        try {
+            mStream.write(data);
+            mStream.flush();
+        } catch (IOException e) {
+           //MainActivity.handler.sendEmptyMessage(SERVER_ERROR);
+            e.printStackTrace();
         }
     }
 }
