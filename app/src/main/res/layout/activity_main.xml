@@ -74,4 +74,12 @@
         android:layout_below="@+id/btnLeft"
         android:layout_toRightOf="@+id/btnLeft"
         android:layout_toEndOf="@+id/btnLeft" />
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/editPort"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -20,17 +22,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (android.os.Build.VERSION.SDK_INT > 9)
-        {
+        if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
+        WebView webView = (WebView) findViewById(R.id.webView);
         Button btnUp = (Button) findViewById(R.id.btnUp);
         Button btnDown = (Button) findViewById(R.id.btnDown);
         Button btnRight = (Button) findViewById(R.id.btnRight);
         Button btnLeft = (Button) findViewById(R.id.btnLeft);
         edtIp = (EditText) findViewById(R.id.editIp);
         edtPort = (EditText) findViewById(R.id.editPort);
+
+        webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+        webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+
+        String summary = "<!Doctype html>" +
+                "<html> \n" +
+                "<body> \n" +
+                "<img src=\"http://192.168.0.107:8081/?action=stream\"> \n" +
+                "</body> \n" +
+                "</html>";
+        webView.loadDataWithBaseURL("file:///android_asset/ ",
+                summary, "text/html", "utf-8", "");
 
         View.OnTouchListener otlBtnOk = new View.OnTouchListener() {
             @Override
