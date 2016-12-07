@@ -9,20 +9,18 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
-
-import java.io.IOException;
-import java.net.Socket;
-
-import static android.net.sip.SipErrorCode.SERVER_ERROR;
+import android.widget.CompoundButton;
+import android.widget.SeekBar;
+import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity {
 
 
     public static final String HOST = "192.168.0.168";
     public static final int PORT = 9092;
-    public static Socket socket;
-
+    public static int switchStatus = 0;
     public static MainSocket mainSocket;
+    public static int speed = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         String summary = "<!Doctype html>" +
                 "<html> \n" +
-                "<body style=\"margin: 0; padding: 0\"> \n" +
+                "<body style=\"margin: 0; padding: 0; background-color: #000000;\"> \n" +
                 "<center>\n" +
                 "<img src=\"http://192.168.0.168:8081/?action=stream\" height=\"100%\" width=\"100%\"> \n" +
                 "</center> \n" +
@@ -91,11 +89,52 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
+        Switch mySwitch = (Switch) findViewById(R.id.mySwitch);
+        mySwitch.setChecked(false);
+
+        mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView,
+                                         boolean isChecked) {
+                if (isChecked) {
+                    switchStatus = 1;
+                    sendMessage(0, "1");
+                }
+                else
+                    switchStatus = 0;
+                    sendMessage(0, "1");
+            }
+        });
+
+        SeekBar seekBar = (SeekBar) findViewById(R.id.seekBar);
+        seekBar.setProgress(50);
+        seekBar.refreshDrawableState();
+        SeekBar.OnSeekBarChangeListener seekBarChangeListener =
+                new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress,
+                                                  boolean fromUser) {
+                        // TODO Auto-generated method stub
+                        speed = seekBar.getProgress();
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+                        // TODO Auto-generated method stub
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                        // TODO Auto-generated method stub
+                    }
+                };
+
+        seekBar.setOnSeekBarChangeListener(seekBarChangeListener);
+
         View.OnClickListener oclBtnConnect = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 connectServer();
-                System.out.println("12");
             }
         };
 
@@ -117,11 +156,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void sendMessage(int id, String action) {
-        //int speed = 50;
-        System.out.println(Integer.toString(encode(id, 100, 0)));
         if (action.contains("down"))
-            mainSocket.sendMessage(Integer.toString(encode(id, 100, 0)));
+            mainSocket.sendMessage(Integer.toString(encode(id, speed, switchStatus)));
         else
-            mainSocket.sendMessage(Integer.toString(encode(0, 100, 0)));
+            mainSocket.sendMessage(Integer.toString(encode(0, speed, switchStatus)));
     }
 }
