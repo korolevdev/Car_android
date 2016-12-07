@@ -5,8 +5,6 @@ import java.net.Socket;
 
 
 public class MainSocket implements Runnable {
-    public static final String HOST = MainActivity.ip;
-    public static final int PORT = Integer.valueOf(MainActivity.port);
     public Thread senderThread;
     public ServerSender sender;
 
@@ -15,7 +13,9 @@ public class MainSocket implements Runnable {
     @Override
     public void run() {
         try {
-            socket = new Socket(HOST, PORT);
+            System.out.println("1222");
+            socket = new Socket(MainActivity.HOST, MainActivity.PORT);
+            System.out.println("1211");
         } catch (IOException e) {
            // MainActivity.handler.sendEmptyMessage(SERVER_ERROR);
             e.printStackTrace();

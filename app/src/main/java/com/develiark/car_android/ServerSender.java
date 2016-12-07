@@ -7,11 +7,8 @@ import java.nio.charset.Charset;
 public class ServerSender implements Runnable {
     private OutputStream mStream;
     public String message = "";
-    public static final String HOST = MainActivity.ip;
-    public static final int PORT = Integer.valueOf(MainActivity.port);
 
     public ServerSender(Socket communicationSocket) throws IOException {
-        communicationSocket = new Socket(HOST, PORT);
         mStream = new BufferedOutputStream(communicationSocket.getOutputStream());
     }
 

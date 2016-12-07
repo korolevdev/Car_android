@@ -4,82 +4,94 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.develiark.car_android.MainActivity">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="9092"
-        android:ems="10"
-        android:id="@+id/editPort"
-        android:layout_below="@+id/editIp"
-        android:layout_alignLeft="@+id/editIp"
-        android:layout_alignStart="@+id/editIp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="192.168.0.168"
-        android:ems="10"
-        android:layout_marginTop="45dp"
-        android:id="@+id/editIp"
-        android:layout_below="@+id/btnLeft" />
-
     <Button
+        android:text="Connect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnUp"
-        android:textSize="25dp"
-        android:text="↑"
-        android:hint="1"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/editIp"
-        android:layout_alignEnd="@+id/editIp" />
-
-    <Button
-        android:text="←"
-        android:hint="4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnLeft"
-        android:textSize="25dp"
-        android:layout_below="@+id/btnUp"
-        android:layout_toLeftOf="@+id/btnUp"
-        android:layout_toStartOf="@+id/btnUp" />
-
-    <Button
-        android:text="→"
-        android:hint="2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnRight"
-        android:textSize="25dp"
-        android:layout_below="@+id/btnUp"
-        android:layout_toRightOf="@+id/btnUp"
-        android:layout_toEndOf="@+id/btnUp" />
-
-    <Button
-        android:text="↓"
-        android:hint="3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnDown"
-        android:textSize="25dp"
-        android:layout_below="@+id/btnLeft"
-        android:layout_toRightOf="@+id/btnLeft"
-        android:layout_toEndOf="@+id/btnLeft" />
+        android:layout_x="9dp"
+        android:layout_y="6dp"
+        android:id="@+id/btnConnect" />
 
     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/editPort"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_height="match_parent" >
+    </WebView>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@drawable/shape"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/btnUp"
+            android:textSize="25dp"
+            android:text="↑"
+            android:hint="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center_horizontal"
+            android:minHeight="35dp"
+            android:minWidth="35dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:text="←"
+                android:hint="4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                android:id="@+id/btnLeft"
+                android:textSize="25dp"
+                android:layout_weight="1"
+                android:minHeight="35dp"
+                android:minWidth="35dp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:minWidth="35dp" />
+
+            <Button
+                android:text="→"
+                android:hint="2"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnRight"
+                style="?android:attr/borderlessButtonStyle"
+                android:textSize="25dp"
+                android:minHeight="35dp"
+                android:minWidth="35dp" />
+
+        </LinearLayout>
+
+        <Button
+            android:text="↓"
+            android:hint="3"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnDown"
+            android:textSize="25dp"
+            android:layout_gravity="center_horizontal"
+            android:minWidth="35dp"
+            android:minHeight="35dp" />
+
+    </LinearLayout>
+
 </RelativeLayout>
