@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int PORT = 9092;
     public static int switchStatus = 0;
     public static MainSocket mainSocket;
-    public static int speed = 100;
+    public static int speed = 50;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

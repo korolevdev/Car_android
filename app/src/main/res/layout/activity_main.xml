@@ -43,7 +43,7 @@
                 android:id="@+id/textView" />
 
             <SeekBar
-                android:layout_width="142dp"
+                android:layout_width="257dp"
                 android:max="100"
                 android:layout_height="wrap_content"
                 android:id="@+id/seekBar"
